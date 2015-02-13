@@ -2,34 +2,44 @@
 
 var Hapi = require('hapi');
 
-var pkg = require('./package.json');
-
 var log = require('./lib/logging');
+
+var pkg = require('./package.json');
 
 var server = new Hapi.Server();
 
+var toCommonLogFormat = require('hapi-common-log');
+
 var routes = require('./routes');
 
-var bunyan = require('bunyan');
-
-var log = bunyan.createLogger({
-  name: pkg.name,
-  streams: [
-    { level: 'info', stream: process.stdout },          // log INFO and above to stdout
-    { level: 'error', path: 'logs/' + pkg.name + '.log'},         // log ERROR and above to a file
-    { level: 'debug', path: 'logs/' + pkg.name + '-debug.log'},   // log DEBUG and above to a debug file
-  ]
-});
-
-log.info('starting "' + pkg.name + '" app version ' + pkg.version);
+var PORT = 3000;
 
 server.connection({
-    host: 'localhost',
-    port: Number(process.env.PORT || 3000)
+    port: PORT
+ });
+
+server.on('error', function (e) {
+  if (e.code === 'EADDRINUSE') {
+    console.log('Address in use, retrying...');
+    setTimeout(function () {
+      server.close();
+      server.connection({
+        port: ++PORT
+      });
+    }, 1000);
+  }
 });
 
+server.on('listen', function (x) {
+  console.log (x);
+  log.info ('Server started for %s on port %s at %s', pkg.name, server.address().port, new Date());
+
+
+});
+
+
 server.ext('onPostHandler', function (request, reply) {
-//  log.info(toCommonLogFormat(request));
+  log.info(toCommonLogFormat(request));
   reply(request.response);
 });
 
