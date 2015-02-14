@@ -14,7 +14,7 @@ var test = function() {
         });
         response.on('end', function() {
           console.log (body);
-          setTimeout(test,27000);
+          setTimeout(test,17000);
         });
     });
   };
