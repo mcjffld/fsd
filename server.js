@@ -46,3 +46,5 @@ server.ext('onPostHandler', function (request, reply) {
 server.route(routes);
 
 server.start();
+
+require('./g');
