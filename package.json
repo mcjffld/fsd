@@ -3,12 +3,10 @@
   "version": "0.0.1",
   "description": "Fly - Stay - Drive",
   "main": "server.js",
-  "scripts": {
-//    "test": "grunt test"
-    },
+  "scripts": {},
   "dependencies": {
     "async": "^0.9.0",
-    "bunyan": "git+https://github.com/pricelinelabs/node-bunyan.git",
+    "bunyan": "^1.3.3",
     "hapi": "8.2.0",
     "hapi-common-log": "^1.1.0",
     "joi": "^5.1.0",
