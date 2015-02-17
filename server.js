@@ -47,4 +47,4 @@ server.route(routes);
 
 server.start();
 
-require('./g');
+//require('./g');

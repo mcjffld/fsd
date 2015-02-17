@@ -4,7 +4,7 @@
   "description": "Fly - Stay - Drive",
   "main": "server.js",
   "scripts": {
-    "test": "grunt test"
+//    "test": "grunt test"
     },
   "dependencies": {
     "async": "^0.9.0",
