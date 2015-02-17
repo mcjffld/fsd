@@ -2,7 +2,7 @@
 
 var log = require('./lib/logging');
 
-var Joi = require('Joi');
+var Joi = require('joi');
 
 var pkgSearch = require('./lib/pkg-search');
 
