@@ -12,7 +12,7 @@ var toCommonLogFormat = require('hapi-common-log');
 
 var routes = require('./routes');
 
-var PORT = 3000;
+var PORT = process.env.PORT || 3000;
 
 server.connection({
     port: PORT
