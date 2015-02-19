@@ -10,7 +10,8 @@
     "hapi": "8.2.0",
     "hapi-common-log": "^1.1.0",
     "joi": "^5.1.0",
-    "lodash": "^3.2.0"
+    "lodash": "^3.2.0",
+    "pmx": "^0.3.1"
   },
   "devDependencies": {
     "grunt": "^0.4.5",
