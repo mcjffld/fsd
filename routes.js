@@ -16,6 +16,14 @@ var products = [{
     }
 ];
 
+var pmx = require('pmx');
+
+var probe = pmx.probe();
+
+var counter = probe.counter({
+  name : 'Downloads'
+});
+
 function findProducts(name) {
     return products.filter(function(product) {
         return product.name.toLowerCase() === name.toLowerCase();
@@ -26,11 +34,14 @@ function searchByName (city, reply) {
   log.info('search called for ' + city);
 
   pkgSearch.search (city, function (responseData) {
+    counter.dec();
+
     reply(responseData);
   });
 }
 
 function search(request, reply) {
+    counter.inc();
 
     log.info('search called');
 

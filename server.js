@@ -1,5 +1,9 @@
 'use strict';
 
+var pmx = require('pmx');
+
+pmx.init();
+
 var Hapi = require('hapi');
 
 var log = require('./lib/logging');
